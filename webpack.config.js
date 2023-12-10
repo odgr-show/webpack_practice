@@ -4,6 +4,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
+    devServer: {
+        static: path.resolve(__dirname, "src"),
+    },
     entry: "./src/js/main.js",
     output: {
         path: path.resolve(__dirname, "./dist"),
@@ -13,7 +16,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.css/,
+                test: /\.(css|sass|scss)/,
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader,
@@ -21,11 +24,14 @@ module.exports = {
                     {
                         loader: "css-loader",
                     },
+                    {
+                        loader: "sass-loader",
+                    },
                 ],
             },
 
             {
-                test: /\.(jpeg|jpg)/,
+                test: /\.(jpeg|jpg|png)/,
                 type: "asset/resource",
                 generator: {
                     filename: "images/[name][ext]",

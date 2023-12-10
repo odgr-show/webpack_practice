@@ -1,0 +1,22 @@
+body {
+    color: lightblue;
+}
+
+h1 {
+    text-align: center;
+}
+
+img {
+    max-width: 100%;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+
+    & .img_2 {
+        width: 400px;
+        height: 400px;
+        object-fit: cover;
+    }
+}

@@ -4,7 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "build:dev": "npx webpack --mode development"
+        "build:dev": "npx webpack --mode development",
+        "start:dev": "npx webpack serve --mode=development"
     },
     "author": "Akira Odagiri",
     "license": "UNLICENSED",
@@ -14,7 +15,10 @@
         "css-loader": "^6.8.1",
         "html-webpack-plugin": "^5.5.4",
         "mini-css-extract-plugin": "^2.7.6",
+        "sass": "^1.69.5",
+        "sass-loader": "^13.3.2",
         "webpack": "^5.89.0",
-        "webpack-cli": "^5.1.4"
+        "webpack-cli": "^5.1.4",
+        "webpack-dev-server": "^4.15.1"
     }
 }
