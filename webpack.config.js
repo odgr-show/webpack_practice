@@ -18,18 +18,37 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js/,
+                test: /\.(ts|tsx)/,
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: "ts-loader",
+                    },
+                ],
+            },
+            {
+                test: /\.(js|jsx)/,
                 exclude: /node_modules/, //node_modulesの中は対象外にする
                 use: [
                     {
                         loader: "babel-loader",
                         options: {
-                            presets: ["@babel/preset-env"],
+                            presets: [
+                                [
+                                    "@babel/preset-env",
+                                    {
+                                        targets: "> 0.25%, not dead",
+                                    },
+                                ],
+                                "@babel/preset-react",
+                            ],
                         },
                     },
                 ],
             },
+            // test
             {
+                // CSS
                 test: /\.(css|sass|scss)/,
                 use: [
                     {
@@ -46,8 +65,8 @@ module.exports = {
                     },
                 ],
             },
-
             {
+                // 画像
                 test: /\.(jpeg|png|jpg)/,
                 type: "asset/resource",
                 generator: {
@@ -55,8 +74,8 @@ module.exports = {
                 },
                 use: [],
             },
-
             {
+                // HTML
                 test: /\.html/,
                 use: [
                     {
@@ -66,7 +85,7 @@ module.exports = {
             },
         ],
     },
-
+    // plugin
     plugins: [
         new MiniCssExtractPlugin({
             filename: "./stylesheets/style.css",
